@@ -1,7 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const Auth = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log('data ', email, password);
+    setIsSubmitting(true)
+  }
+
+  useEffect(() => {
+    if (!isSubmitting) {
+      return
+    }
+    axios('https://conduit.productionready.io/api/users/login', {
+      method: 'POST',
+      data: {
+        user: {
+          email: 'adds',
+          password: 'dsdds'
+        }
+      }
+    })
+      .then((res) => {
+        console.log('success', res);
+      })
+      .catch((err) => {
+        console.log('error', err);
+      })
+      .finally(() => {
+        setIsSubmitting(false)
+      })
+  })
+
   return (
     <div className="auth-page">
       <div className="container page">
@@ -13,16 +48,32 @@ const Auth = () => {
               <Link to="register">Need an account?</Link>
             </p>
 
-            <form>
+            <form onSubmit={handleSubmit}>
               <fieldset>
                 <fieldset className="form-group">
-                  <input type="email" className="form-control form-control-lg" placeholder="Email" />
+                  <input
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                    type="email"
+                    className="form-control form-control-lg"
+                    placeholder="Email"
+                  />
                 </fieldset>
                 <fieldset className="form-group">
-                  <input type="password" className="form-control form-control-lg" placeholder="Password" />
+                  <input
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    type="password"
+                    className="form-control form-control-lg"
+                    placeholder="Password"
+                  />
                 </fieldset>
 
-                <button className="btn btn-lg btn-primary pull-xs-right" type="submit">
+                <button 
+                  disabled={isSubmitting} 
+                  className="btn btn-lg btn-primary pull-xs-right" 
+                  type="submit"
+                >
                   Sign in
                 </button>
               </fieldset>
