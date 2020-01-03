@@ -15,8 +15,8 @@ const Auth = (props) => {
   const [password, setPassword] = useState('')
   const [username, setUsername] = useState('')
   const [isSuccessSubmit, setIsSuccessSubmit] = useState(false)
-  const [{ response, isLoading, error }, doFetch] = useFetch(apiUrl)
-  const [token, setToken] = useLocalStorage('token')
+  const [{ response, isLoading }, doFetch] = useFetch(apiUrl)
+  const [setToken] = useLocalStorage('token')
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -36,7 +36,7 @@ const Auth = (props) => {
 
     setToken(response.user.token)
     setIsSuccessSubmit(true)
-  }, [response])
+  }, [response, setToken])
 
   if (isSuccessSubmit) {
     return <Redirect to="/" />
@@ -81,6 +81,7 @@ const Auth = (props) => {
                     onChange={e => setPassword(e.target.value)}
                     type="password"
                     className="form-control form-control-lg"
+                    autoComplete="on"
                     placeholder="Password"
                   />
                 </fieldset>
