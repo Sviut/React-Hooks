@@ -7,6 +7,7 @@ import Pagination from '../../components/pagination'
 import Loading from '../../components/loading'
 import ErrorMessage from '../../components/errorMessage'
 import PopularTags from '../../components/popularTags'
+import FeedToggler from '../../components/feedToggler'
 
 import { getPagination, limit } from '../../utils'
 
@@ -34,6 +35,7 @@ const GlobalFeed = ({ location, match }) => {
       <div className='container page'>
         <div className='row'>
           <div className='col-md-9'>
+            <FeedToggler />
             {isLoading && <Loading />}
             {error && <ErrorMessage />}
             {!isLoading && response && (
