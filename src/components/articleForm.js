@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import BackendErrorMessages from './backendErrorMessages'
 
-const ArticleForm = ({ onSubmit, errors, initialValue }) => {
+const ArticleForm = ({ onSubmit, errors, initialValues }) => {
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
   const [description, setDescription] = useState('')
@@ -20,12 +20,12 @@ const ArticleForm = ({ onSubmit, errors, initialValue }) => {
   }
 
   useEffect(() => {
-    if (!initialValue) return
-    setTitle(initialValue.title)
-    setBody(initialValue.body)
-    setDescription(initialValue.description)
-    setTagList(initialValue.tagList.join(' '))
-  }, [initialValue])
+    if (!initialValues) return
+    setTitle(initialValues.title)
+    setBody(initialValues.body)
+    setDescription(initialValues.description)
+    setTagList(initialValues.tagList.join(' '))
+  }, [initialValues])
 
   return (
     <div className='editor-page'>

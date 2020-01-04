@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Redirect } from 'react-router-dom'
 
-import ArticleForm from './articleForm'
-import useFetch from '../hooks/useFetch'
-import { CurrentUserContext } from '../contexts/currentUser'
+import ArticleForm from '../../components/articleForm'
+import useFetch from '../../hooks/useFetch'
+import { CurrentUserContext } from '../../contexts/currentUser'
 
 const CreateArticle = () => {
   const apiUrl = '/articles'
