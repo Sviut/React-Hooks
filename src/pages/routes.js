@@ -9,11 +9,14 @@ import YourFeed from './yourFeed'
 import CreateArticle from './createArticle'
 import EditArticle from './editArticle'
 import Settings from './settings'
+import UserProfile from './userProfile'
 
 export default () => {
   return (
     <Switch>
       <Route path="/" component={GlobalFeed} exact/>
+      <Route path="/profiles/:slug" component={UserProfile} />
+      <Route path="/profiles/:slug/favorites" component={UserProfile} />
       <Route path="/settings" component={Settings} />
       <Route path="/feed" component={YourFeed} />
       <Route path="/tags/:slug" component={TagFeed} />
