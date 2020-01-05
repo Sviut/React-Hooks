@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { NavLink } from 'react-router-dom'
 
 import useFetch from '../../hooks/useFetch'
-
+import UserArticles from './components/userArticles'
 
 const UserProfile = ({ location, match }) => {
   const slug = match.params.slug
@@ -51,7 +51,7 @@ const UserProfile = ({ location, match }) => {
             </div>
           </div>
         </div>
-      
+        <UserArticles username={response.profile.username} location={location} isFavorites={isFavorites} url={match.url}/>
       </div>
     </div>
   )
