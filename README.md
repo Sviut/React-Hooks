@@ -1,4 +1,6 @@
 
 ## Medium clone with React Hooks
 
-Clone and 'npm run start'
+1. Clone
+2. npm i
+3. npm run start
