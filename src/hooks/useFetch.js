@@ -33,13 +33,13 @@ export default (url) => {
     axios(baseUrl + url, requestOptions)
       .then((res) => {
         if(!skipGetResponseAfterDestroy) {
-          console.log('success', res);
+          // console.log('success', res);
           setResponse(res.data)
         }
       })
       .catch((err) => {
         if(!skipGetResponseAfterDestroy) {
-          console.log('error', err);
+          // console.log('error', err);
           setError(err.response.data)
         }
       })

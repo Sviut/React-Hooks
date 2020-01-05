@@ -58,7 +58,7 @@ const Settings = () => {
     if (!response) return
 
     dispatch({type: 'SET_AUTHORIZED', payload: response.user})
-  }, [response])
+  }, [response,dispatch])
 
   if (isSuccessfullLogout) {
     return <Redirect to='/'/>

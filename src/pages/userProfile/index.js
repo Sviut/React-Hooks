@@ -12,7 +12,7 @@ const UserProfile = ({ location, match }) => {
 
   useEffect(() => {
     doFetch()
-  }, [])
+  }, [doFetch])
 
   if (!response) {
     return null
